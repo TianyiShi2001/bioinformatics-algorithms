@@ -1,14 +1,6 @@
-import { show_alignment } from "./_show.js";
 import { GAP, GAP_CHAR, SUBSTITUTION_MATRIX, UP, LEFT, DIAG } from "./_params.js";
 
-// main
-function main() {
-  let [s1, s2] = process.argv.slice(2);
-  let [s, a1, a2] = needleman_wunsch(s1, s2);
-  console.log(show_alignment(a1, a2));
-}
-
-function needleman_wunsch(s1, s2, substitution_matrix = SUBSTITUTION_MATRIX, gap_penalty = GAP, gap_char = GAP_CHAR) {
+export function needleman_wunsch(s1, s2, substitution_matrix = SUBSTITUTION_MATRIX, gap_penalty = GAP, gap_char = GAP_CHAR) {
   let [score_matrix, traceback_matrix] = compute_score_and_traceback_matrices(s1, s2, substitution_matrix, gap_penalty);
   let score = score_matrix[s1.length][s2.length];
   let [aln1, aln2] = traceback(traceback_matrix, s1, s2, gap_char);
@@ -36,7 +28,7 @@ function traceback(traceback_matrix, s1, s2, gap_char) {
   [s1, s2] = [Array.from(s1), Array.from(s2)];
   let [i, j] = [s1.length, s2.length];
   let [aln1, aln2] = [[], []];
-  while (i > 0 && j > 0) {
+  while (!(i === 0 && j === 0)) {
     let direction = traceback_matrix[i][j];
     if (direction === UP) {
       aln1.push(s1.pop());
@@ -77,5 +69,3 @@ function compute_max_score_and_direction(up, left, diag) {
   let direction = up === max_score ? UP : left === max_score ? LEFT : DIAG;
   return [max_score, direction];
 }
-
-main();
