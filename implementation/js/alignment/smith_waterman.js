@@ -1,14 +1,7 @@
 import { show_alignment } from "./_show.js";
 import { GAP, GAP_CHAR, SUBSTITUTION_MATRIX, UP, LEFT, DIAG } from "./_params.js";
 
-// main
-function main() {
-  let [s1, s2] = process.argv.slice(2);
-  let [s, a1, a2] = smith_waterman(s1, s2);
-  console.log(show_alignment(a1, a2));
-}
-
-function smith_waterman(s1, s2, substitution_matrix = SUBSTITUTION_MATRIX, gap_penalty = GAP, gap_char = GAP_CHAR) {
+export function smith_waterman(s1, s2, substitution_matrix = SUBSTITUTION_MATRIX, gap_penalty = GAP, gap_char = GAP_CHAR) {
   let [score_matrix, traceback_matrix] = compute_score_and_traceback_matrices(s1, s2, substitution_matrix, gap_penalty);
   let [score, coords] = find_max_score_and_coords(score_matrix);
   let [aln1, aln2] = traceback(traceback_matrix, s1, s2, gap_char, coords);
@@ -82,5 +75,3 @@ function compute_max_score_and_direction(up, left, diag) {
   let direction = up === max_score ? UP : left === max_score ? LEFT : max_score === diag ? DIAG : 0;
   return [max_score, direction];
 }
-
-main();
