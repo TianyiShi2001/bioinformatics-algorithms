@@ -1,6 +1,6 @@
 export function show_alignment(s1, s2, n = 80) {
   let res = "";
-  let l = s1.length;
+  let l = Math.max(s1.length, s2.length);
   let i = 0;
   while (l > i + n) {
     res += s1.slice(i, i + n);
