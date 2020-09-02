@@ -15,7 +15,7 @@ const SUBSTITUTION_MATRIX = {
   C: { A: MISMATCH, C: MATCH, G: MISMATCH, T: MISMATCH },
   G: { A: MISMATCH, C: MISMATCH, G: MATCH, T: MISMATCH },
   T: { A: MISMATCH, C: MISMATCH, G: MISMATCH, T: MATCH },
-};
+}; 
 
 function substitution(a, b) {
   return SUBSTITUTION_MATRIX[a][b];
