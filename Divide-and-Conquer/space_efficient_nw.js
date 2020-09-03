@@ -15,7 +15,7 @@ const SUBSTITUTION_MATRIX = {
   C: { A: MISMATCH, C: MATCH, G: MISMATCH, T: MISMATCH },
   G: { A: MISMATCH, C: MISMATCH, G: MATCH, T: MISMATCH },
   T: { A: MISMATCH, C: MISMATCH, G: MISMATCH, T: MATCH },
-}; 
+};
 
 function substitution(a, b) {
   return SUBSTITUTION_MATRIX[a][b];
@@ -80,6 +80,7 @@ function costOnlyNw(s, t) {
  * @param {string} t sequence T
  */
 function nw_one_row(s, t) {
+  // ! problem
   let a = Array.from(t).reduce(
     (m, curr, idx) => {
       let up = GAP * (idx + 2);
@@ -90,7 +91,7 @@ function nw_one_row(s, t) {
       m[1].push([up, left, diag].indexOf(max) + 1);
       return m;
     },
-    [[GAP], []]
+    [[GAP], [UP]]
   )[1];
   let diagIdx = a.reverse().indexOf(3);
   if (diagIdx === -1) {
