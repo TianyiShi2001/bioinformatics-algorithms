@@ -17,7 +17,7 @@ checksum = "4f823d037a7ec6ea2197046bafd4ae150e6bc36f9ca347404f46a46823fa84f2"
 dependencies = [
  "approx",
  "num-complex",
- "num-traits",
+ "num-traits 0.2.12",
 ]
 
 [[package]]
@@ -26,7 +26,7 @@ version = "0.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f0e60b75072ecd4168020818c0107f2857bb6c4e64252d8d3983f6263b40a5c3"
 dependencies = [
- "num-traits",
+ "num-traits 0.2.12",
 ]
 
 [[package]]
@@ -71,7 +71,7 @@ dependencies = [
  "ndarray",
  "newtype_derive",
  "num-integer",
- "num-traits",
+ "num-traits 0.2.12",
  "ordered-float",
  "petgraph",
  "quick-error",
@@ -105,9 +105,10 @@ name = "bioinformatics-algorithms"
 version = "0.1.0"
 dependencies = [
  "bio",
+ "kodama",
  "nalgebra",
  "ndarray",
- "num-traits",
+ "num-traits 0.2.12",
 ]
 
 [[package]]
@@ -359,7 +360,7 @@ version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a872a22f9e6f7521ca557660adb96dd830e54f0f490fa115bb55dd69d38b27e7"
 dependencies = [
- "num-traits",
+ "num-traits 0.2.12",
 ]
 
 [[package]]
@@ -367,6 +368,15 @@ name = "itoa"
 version = "0.4.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dc6f3ad7b9d11a0c00842ff8de1b60ee58661048eb8049ed33c73594f359d7e6"
+
+[[package]]
+name = "kodama"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "259dd92cdef44e011d5cfdadf72f20fa366b0458a4d9e03d72d8ae45b4003719"
+dependencies = [
+ "num-traits 0.1.43",
+]
 
 [[package]]
 name = "lazy_static"
@@ -422,7 +432,7 @@ dependencies = [
  "matrixmultiply",
  "num-complex",
  "num-rational",
- "num-traits",
+ "num-traits 0.2.12",
  "rand 0.6.5",
  "typenum",
 ]
@@ -436,7 +446,7 @@ dependencies = [
  "matrixmultiply",
  "num-complex",
  "num-integer",
- "num-traits",
+ "num-traits 0.2.12",
  "rawpointer",
 ]
 
@@ -456,7 +466,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b6b19411a9719e753aff12e5187b74d60d3dc449ec3f4dc21e3989c3f554bc95"
 dependencies = [
  "autocfg 1.0.1",
- "num-traits",
+ "num-traits 0.2.12",
 ]
 
 [[package]]
@@ -466,7 +476,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8d59457e662d541ba17869cf51cf177c0b5f0cbf476c66bdc90bf1edac4f875b"
 dependencies = [
  "autocfg 1.0.1",
- "num-traits",
+ "num-traits 0.2.12",
 ]
 
 [[package]]
@@ -477,7 +487,16 @@ checksum = "5c000134b5dbf44adc5cb772486d335293351644b801551abe8f75c84cfa4aef"
 dependencies = [
  "autocfg 1.0.1",
  "num-integer",
- "num-traits",
+ "num-traits 0.2.12",
+]
+
+[[package]]
+name = "num-traits"
+version = "0.1.43"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "92e5113e9fd4cc14ded8e499429f396a20f98c772a47cc8622a736e1ec843c31"
+dependencies = [
+ "num-traits 0.2.12",
 ]
 
 [[package]]
@@ -496,7 +515,7 @@ version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3741934be594d77de1c8461ebcbbe866f585ea616a9753aa78f2bdc69f0e4579"
 dependencies = [
- "num-traits",
+ "num-traits 0.2.12",
 ]
 
 [[package]]
