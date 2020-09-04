@@ -28,10 +28,10 @@ impl<'a, F: MatchFunc> SpaceEfficientAligner<'a, F> {
         }
     }
     pub fn global(&mut self) {
-        self.result.alignment = self.nw_recursive_(self.x, self.y, self.x.len(), self.y.len());
+        self.result.alignment = self.nw_recursive(self.x, self.y, self.x.len(), self.y.len());
         self.result.score = self.cost_only_nw(self.x, self.y, false)[self.y.len()];
     }
-    fn nw_recursive_(&self, x: &Seq, y: &Seq, m: usize, n: usize) -> Vec<Direction> {
+    fn nw_recursive(&self, x: &Seq, y: &Seq, m: usize, n: usize) -> Vec<Direction> {
         // m = x.len(); n = y.len()
         if m == 1 {
             return self.nw_onerow(x[0], y);
@@ -39,8 +39,21 @@ impl<'a, F: MatchFunc> SpaceEfficientAligner<'a, F> {
             let imid = m / 2;
             let jmid = self.find_mid(x, y);
             return [
-                self.nw_recursive_(&x[..imid], &y[..jmid], imid, jmid),
-                self.nw_recursive_(&x[imid..], &y[jmid..], m - imid, n - jmid),
+                self.nw_recursive(&x[..imid], &y[..jmid], imid, jmid),
+                self.nw_recursive(&x[imid..], &y[jmid..], m - imid, n - jmid),
+            ]
+            .concat();
+        }
+    }
+    fn nw_recursive_(&self, i1: usize, i2: usize, j1: usize, j2: usize) -> Vec<Direction> {
+        if i1 + 1 == i2 {
+            return self.nw_onerow(self.x[i1], &self.y[j1..j2]);
+        } else {
+            let imid = (i1 + i2 + 1) / 2;
+            let jmid = self.find_mid(&self.x[i1..i2], &self.y[j1..j2]) + j1;
+            return [
+                self.nw_recursive_(i1, imid, j1, jmid),
+                self.nw_recursive_(imid, i2, jmid, j2),
             ]
             .concat();
         }
